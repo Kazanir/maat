@@ -28,7 +28,7 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   php5-fpm php5-gd php5-ldap php5-mcrypt php5-mysql php5-memcache \
   php5-pgsql php5-redis putty-tools redis-server resolvconf \
   rsync rsyslog samba screen sed siege tcpdump tmux traceroute \
-  udev ufw unixodbc-devvim vim-common vim-tiny wget xml-core zsh \
+  udev ufw unixodbc-dev vim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
   librecode-dev dnsmasq
