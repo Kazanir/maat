@@ -66,7 +66,7 @@ sudo service php7-fpm start
 
 # @todo: HHVM config files
 sudo cp ~/maat/hhvm/php.ini /etc/hhvm/php.ini
-sudo cp ~/maat/hhvm/server.ini /etc/hhvm/server/ini
+sudo cp ~/maat/hhvm/server.ini /etc/hhvm/server.ini
 sudo service hhvm restart
 
 # Apache config
@@ -74,8 +74,9 @@ sudo a2dismod mpm_event
 sudo a2enmod alias actions vhost_alias rewrite mpm_worker ssl socache_shmcb proxy fastcgi
 # @todo: Wildcard VHosts for PHP5, PHP7, HHVM
 sudo cp ~/maat/apache2/vhosts/*.conf /etc/apache2/sites-available/
+sudo cp ~/maat/apache2/apache2.conf /etc/apache2/
+sudo a2dissite 000-default.conf
 sudo a2ensite php5.conf php7.conf hhvm.conf
-
 
 # Restart Apache
 sudo apache2ctl restart
