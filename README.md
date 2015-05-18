@@ -10,9 +10,9 @@ git clone https://github.com/Kazanir/maat.git
 
 This will set up 3 virtual host servers in Apache, which are for the domains `*.php5.benchmark`, `*.php7.benchmark`, and `*.hhvm.benchmark`. These servers will serve a subdomain based on a dynamic folder path under `/var/www/[subdomain]/www/`, where the final `www/` is the document root. So for example, `/var/www/drupal8/www/` would be accesssible at the following hostnames:
 
-http://drupal8.php5.benchmark
-http://drupal8.php7.benchmark
-http://drupla8.hhvm.benchmark
+- http://drupal8.php5.benchmark
+- http://drupal8.php7.benchmark
+- http://drupal8.hhvm.benchmark
 
 The provisioning script sets up the *.benchmark domain with an internal DNS wildcard.
 
