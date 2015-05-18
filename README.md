@@ -4,7 +4,7 @@ This repository is a set of configuration files and scripts to set up a machine 
 
 ```
 cd ~
-wget -O - http://github.com/Kazanir/maat/master/scripts/install.sh | sudo sh
+wget -O - https://raw.githubusercontent.com/Kazanir/maat/master/scripts/install.sh | sudo sh
 ./maat/scripts/provision.sh
 ```
 
