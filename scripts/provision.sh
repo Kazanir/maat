@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password mysql'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password mysql'
 
@@ -60,6 +62,13 @@ sudo service php7-fpm start
 
 # @todo: PHP7 config files
 
+# @todo: HHVM setup
+
+# @todo: HHVM config files
+sudo cp ~/maat/hhvm/php.ini /etc/hhvm/php.ini
+sudo cp ~/maat/hhvm/server.ini /etc/hhvm/server/ini
+sudo service hhvm restart
+
 # Apache config
 sudo a2dismod mpm_event
 sudo a2enmod alias actions vhost_alias rewrite mpm_worker ssl socache_shmcb proxy fastcgi
@@ -71,6 +80,7 @@ sudo a2ensite php5.conf php7.conf hhvm.conf
 
 # Restart Apache
 sudo apache2ctl restart
+sudo apache2ctl restart
 
 # Composer
 curl -sS https://getcomposer.org/installer | php
@@ -79,10 +89,10 @@ composer global require drush/drush:dev-master
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> /home/$USER/.bashrc
 
 # Use my Vim config! It rules.
-# git clone https://github.com/Kazanir/dotvim.git ~/.vim
-# ln -s ~/.vim/.vimrc ~/.vimrc
-# cd ~/.vim
-# git submodule init
-# git submodule update
+git clone https://github.com/Kazanir/dotvim.git ~/.vim
+ln -s ~/.vim/.vimrc ~/.vimrc
+cd ~/.vim
+git submodule init
+git submodule update
 
 
