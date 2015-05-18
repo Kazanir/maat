@@ -95,7 +95,8 @@ git submodule init
 git submodule update
 
 # @todo: Wildcard DNS for *.benchmark
-sudo cp ~/maat/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
-sudo echo "prepend domain-name-servers 127.0.0.1;" | sudo tee -a /etc/dhcp/dhclient.conf
-sudo service networking restart
+# The below doesn't work on EC2, use it at your peril!!!
+# sudo cp ~/maat/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
+# sudo echo "prepend domain-name-servers 127.0.0.1;" | sudo tee -a /etc/dhcp/dhclient.conf
+# sudo service networking restart
 
