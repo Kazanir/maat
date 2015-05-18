@@ -31,7 +31,7 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   udev ufw unixodbc-dev vagrant vim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
-  librecode-dev
+  librecode-dev dnsmasq
 
 # Permissions chicanery
 sudo usermod -a -G www-data $USER
@@ -76,7 +76,6 @@ sudo a2enmod alias actions vhost_alias rewrite mpm_worker ssl socache_shmcb prox
 sudo cp ~/maat/apache2/vhosts/*.conf /etc/apache2/sites-available/
 sudo a2ensite php5.conf php7.conf hhvm.conf
 
-# @todo: Wildcard DNS for *.benchmark
 
 # Restart Apache
 sudo apache2ctl restart
@@ -95,4 +94,8 @@ cd ~/.vim
 git submodule init
 git submodule update
 
+# @todo: Wildcard DNS for *.benchmark
+sudo cp ~/maat/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
+sudo sed -i "prepend domain-name-servers 127.0.0.1;" /etc/dhcp/dhclient.conf
+sudo service network-manager restart
 
