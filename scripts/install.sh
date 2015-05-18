@@ -7,6 +7,6 @@ sudo apt-get install git -y
 
 git clone https://github.com/Kazanir/maat.git
 
-# Once this has run, you can provision with:
-# ./maat/scripts/provision.sh
+echo "Repository downloaded successfully. To provision this machine, run:"
+echo "./maat/scripts/provision.sh"
 
