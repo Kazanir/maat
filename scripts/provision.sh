@@ -18,17 +18,17 @@ sudo apt-get update -y
 sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   apache2-utils apparmor apt apt-transport-https apt-utils autoconf automake \
   bash bash-completion build-essential bzip2 ca-certificates cmake coreutils \
-  default-jre dos2unix dpkg e2fsprogs ed eject findutils gcc-4.8 \
-  geoip-database git git-flow gitk glances gnupg gpgsm gpgv grep hhvm iperf \
+  default-jre dos2unix dpkg ed eject findutils gcc-4.8 \
+  geoip-database git-flow glances grep hhvm iperf \
   libapache2-mod-fastcgi libmcrypt-dev libmemcached-dev libmysqlclient-dev \
   libtool makedev man-db manpages mawk memcached mime-support mlocate \
   module-init-tools mount mountall mtr multiarch-support mysql-common \
-  mysql-server ncdu ncurses-base ncurses-bin ocaml ocaml-native-compilers \
+  mysql-server ncdu ncurses-base ncurses-bin \
   openntpd openssh-client openssh-server openssl php5 php5-cli php5-curl \
-  php5-dbg php5-fpm php5-gd php5-ldap php5-mcrypt php5-mysql php5-memcache \
-  php5-pgsql php5-redis php5-xdebug putty-tools redis-server resolvconf \
-  rsync rsyslog samba screen sed siege solr-tomcat tcpdump tmux traceroute \
-  udev ufw unixodbc-dev vagrant vim vim-common vim-tiny wget xml-core zsh \
+  php5-fpm php5-gd php5-ldap php5-mcrypt php5-mysql php5-memcache \
+  php5-pgsql php5-redis putty-tools redis-server resolvconf \
+  rsync rsyslog samba screen sed siege tcpdump tmux traceroute \
+  udev ufw unixodbc-devvim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
   librecode-dev dnsmasq
@@ -96,6 +96,6 @@ git submodule update
 
 # @todo: Wildcard DNS for *.benchmark
 sudo cp ~/maat/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
-sudo sed -i "prepend domain-name-servers 127.0.0.1;" /etc/dhcp/dhclient.conf
-sudo service network-manager restart
+sudo echo "prepend domain-name-servers 127.0.0.1;" | sudo tee -a /etc/dhcp/dhclient.conf
+sudo service networking restart
 
