@@ -9,6 +9,7 @@ deb http://security.ubuntu.com/ubuntu trusty-security multiverse" | sudo tee -a 
 
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
 sudo add-apt-repository -y 'deb http://dl.hhvm.com/ubuntu trusty main'
+sudo add-apt-repository -y ppa:ondrej/php5-5.6
 
 sudo apt-get update -y
 
@@ -42,7 +43,7 @@ mysql -u root -pmysql -e "FLUSH PRIVILEGES;"
 
 
 # PHP5 setup
-sudo php5enmod mcrypt pdo_mysql mysql mysqli
+sudo php5enmod mcrypt pdo_mysql mysql mysqli redis memcache
 sudo service php5-fpm restart
 # @todo: PHP5 config files
 
