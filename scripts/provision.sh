@@ -14,13 +14,16 @@ sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e72
 sudo add-apt-repository -y 'deb http://dl.hhvm.com/ubuntu trusty main'
 sudo add-apt-repository -y ppa:ondrej/php5-5.6
 
+wget -O - https://packagecloud.io/gpg.key | sudo apt-key add -
+echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sources.list.d/blackfire.list  
+
 sudo apt-get update -y
 
 sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   apache2-utils apparmor apt apt-transport-https apt-utils autoconf automake \
   bash bash-completion build-essential bzip2 ca-certificates cmake coreutils \
-  default-jre dos2unix dpkg ed eject findutils gcc-4.8 \
-  geoip-database git-flow glances grep hhvm iperf linuxtools \
+  default-jre dos2unix dpkg ed eject findutils gcc-4.8 blackfire-agent \
+  geoip-database git-flow glances grep hhvm iperf linuxtools blackfire-php \
   libapache2-mod-fastcgi libmcrypt-dev libmemcached-dev libmysqlclient-dev \
   libtool makedev man-db manpages mawk memcached mime-support mlocate \
   module-init-tools mount mountall mtr multiarch-support mysql-common \
