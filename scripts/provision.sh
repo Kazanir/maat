@@ -23,11 +23,11 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   apache2-utils apparmor apt apt-transport-https apt-utils autoconf automake \
   bash bash-completion build-essential bzip2 ca-certificates cmake coreutils \
   default-jre dos2unix dpkg ed eject findutils gcc-4.8 blackfire-agent \
-  geoip-database git-flow glances grep hhvm iperf linuxtools blackfire-php \
+  geoip-database git-flow glances grep hhvm iperf linux-tools-generic-lts-trusty \
   libapache2-mod-fastcgi libmcrypt-dev libmemcached-dev libmysqlclient-dev \
   libtool makedev man-db manpages mawk memcached mime-support mlocate \
   module-init-tools mount mountall mtr multiarch-support mysql-common \
-  mysql-server ncdu ncurses-base ncurses-bin nginx \
+  mysql-server ncdu ncurses-base ncurses-bin nginx blackfire-php \
   openntpd openssh-client openssh-server openssl php5 php5-cli php5-curl \
   php5-fpm php5-gd php5-ldap php5-mcrypt php5-mysql php5-memcache \
   php5-pgsql php5-redis putty-tools redis-server resolvconf \
