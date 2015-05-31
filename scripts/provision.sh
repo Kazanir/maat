@@ -104,15 +104,22 @@ cd ~
 git clone https://github.com/Kazanir/oss-performance.git oss
 cd oss
 composer install
+echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
+
 
 # Get a working copy of Linuxtools perf
 wget http://dl.hhvm.com/resources/perf.gz
 gunzip perf.gz
 sudo mv perf /usr/bin/perf
 
-
-
-
+# Install an old, not-buggy version of Siege
+cd ~
+wget http://download.joedog.org/siege/siege-2.70.tar.gz
+tar -xzvf siege-2.70.tar.gz
+cd siege-2.70/
+./configure
+sudo make
+sudo make install
 
 # @todo: Wildcard DNS for *.benchmark
 # The below doesn't work on EC2, use it at your peril!!!
