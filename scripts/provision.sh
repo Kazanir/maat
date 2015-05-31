@@ -111,6 +111,7 @@ echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
 wget http://dl.hhvm.com/resources/perf.gz
 gunzip perf.gz
 sudo mv perf /usr/bin/perf
+sudo chmod a+x /usr/bin/perf
 
 # Install an old, not-buggy version of Siege
 cd ~
