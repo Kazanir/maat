@@ -7,7 +7,8 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 
 echo "deb http://archive.ubuntu.com/ubuntu trusty multiverse
 deb http://archive.ubuntu.com/ubuntu trusty-updates multiverse
-deb http://security.ubuntu.com/ubuntu trusty-security multiverse" | sudo tee -a /etc/apt/sources.list > /dev/null
+deb http://security.ubuntu.com/ubuntu trusty-security multiverse
+deb http://repos.zend.com/zend-server/early-access/php7/repos ubuntu/" | sudo tee -a /etc/apt/sources.list > /dev/null
 
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
 sudo add-apt-repository -y 'deb http://dl.hhvm.com/ubuntu trusty main'
@@ -19,11 +20,11 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   apache2-utils apparmor apt apt-transport-https apt-utils autoconf automake \
   bash bash-completion build-essential bzip2 ca-certificates cmake coreutils \
   default-jre dos2unix dpkg ed eject findutils gcc-4.8 \
-  geoip-database git-flow glances grep hhvm iperf \
+  geoip-database git-flow glances grep hhvm iperf linuxtools \
   libapache2-mod-fastcgi libmcrypt-dev libmemcached-dev libmysqlclient-dev \
   libtool makedev man-db manpages mawk memcached mime-support mlocate \
   module-init-tools mount mountall mtr multiarch-support mysql-common \
-  mysql-server ncdu ncurses-base ncurses-bin \
+  mysql-server ncdu ncurses-base ncurses-bin nginx \
   openntpd openssh-client openssh-server openssl php5 php5-cli php5-curl \
   php5-fpm php5-gd php5-ldap php5-mcrypt php5-mysql php5-memcache \
   php5-pgsql php5-redis putty-tools redis-server resolvconf \
@@ -31,7 +32,7 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   udev ufw unixodbc-dev vim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
-  librecode-dev dnsmasq
+  librecode-dev
 
 # Permissions chicanery
 sudo usermod -a -G www-data $USER
@@ -94,6 +95,21 @@ ln -s ~/.vim/.vimrc ~/.vimrc
 cd ~/.vim
 git submodule init
 git submodule update
+
+# Install Facebook's OSS performance toolkit
+cd ~
+git clone https://github.com/Kazanir/oss-performance.git oss
+cd oss
+composer install
+
+# Get a working copy of Linuxtools perf
+wget http://dl.hhvm.com/resources/perf.gz
+gunzip perf.gz
+sudo mv perf /usr/bin/perf
+
+
+
+
 
 # @todo: Wildcard DNS for *.benchmark
 # The below doesn't work on EC2, use it at your peril!!!
