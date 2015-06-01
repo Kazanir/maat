@@ -35,7 +35,7 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   udev ufw unixodbc-dev vim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
-  librecode-dev
+  librecode-dev libjpeg62
 
 # Permissions chicanery
 sudo usermod -a -G www-data $USER
@@ -54,7 +54,7 @@ sudo service php5-fpm restart
 # @todo: PHP5 config files
 
 # @todo: PHP7 setup
-wget http://repos.zend.com/zend-server/early-access/php7/php-7.0-latest-DEB-x86_64.tar.gz
+wget http://repos.zend.com/zend-server/early-access/php7/php-7.0-240515-DEB-x86_64.tar.gz
 sudo tar zxPf php-7.*.tar.gz
 sudo cp ~/maat/php7/etc-initd-php7fpm /etc/init.d/php7-fpm
 sudo chmod a+x /etc/init.d/php7-fpm
