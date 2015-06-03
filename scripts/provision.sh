@@ -35,7 +35,7 @@ sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
   udev ufw unixodbc-dev vim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
-  librecode-dev libjpeg62
+  librecode-dev libjpeg62 php5-cgi
 
 # Permissions chicanery
 sudo usermod -a -G www-data $USER
@@ -45,8 +45,12 @@ sudo chown www-data:www-data /var/log/php5-fpm.log
 # MySQL user setup
 mysql -u root -pmysql -e "CREATE USER '$USER'@'localhost';"
 mysql -u root -pmysql -e "GRANT ALL ON *.* TO '$USER'@'localhost';"
-mysql -u root -pmysql -e "FLUSH PRIVILEGES;"
 
+mysql -u root -pmysql -e "CREATE USER 'drupal_bench'@'localhost';"
+mysql -u root -pmysql -e "GRANT ALL ON *.* TO 'drupal_bench'@'localhost' IDENTIFIED BY 'drupal_bench';"
+
+mysql -u root -pmysql -e "FLUSH PRIVILEGES;"
+mysql -u root -pmysql -e "SET GLOBAL max_connections = 1000;"
 
 # PHP5 setup
 sudo php5enmod mcrypt pdo_mysql mysql mysqli redis memcache
