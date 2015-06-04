@@ -10,17 +10,17 @@ cp ~/oss/base/PerfSettings.php ~/maat/tools/oss/PerfSettingsBackup.php
 echo "***** Running OSS batch with concurrency 1..."
 
 cp ~/maat/tools/oss/PerfC1.php ~/oss/base/PerfSettings.php
-hhvm ~/oss/batch-run.php < ~/maat/tools/batch.json > ~/maat/results/results_c1_${CURRENT_DATE}.json
+hhvm ~/oss/batch-run.php --i-am-not-benchmarking --no-proxygen < ~/maat/tools/batch.json > ~/maat/results/results_c1_${CURRENT_DATE}.json
 
 echo "***** Running OSS batch with concurrency 5..."
 
 cp ~/maat/tools/oss/PerfC5.php ~/oss/base/PerfSettings.php
-hhvm ~/oss/batch-run.php < ~/maat/tools/batch.json > ~/maat/results/results_c5_${CURRENT_DATE}.json
+hhvm ~/oss/batch-run.php --i-am-not-benchmarking --no-proxygen < ~/maat/tools/batch.json > ~/maat/results/results_c5_${CURRENT_DATE}.json
 
 echo "***** Running OSS batch with concurrency 20..."
 
 cp ~/maat/tools/oss/PerfC20.php ~/oss/base/PerfSettings.php
-hhvm ~/oss/batch-run.php < ~/maat/tools/batch.json > ~/maat/results/results_c20_${CURRENT_DATE}.json
+hhvm ~/oss/batch-run.php --i-am-not-benchmarking --no-proxygen < ~/maat/tools/batch.json > ~/maat/results/results_c20_${CURRENT_DATE}.json
 
 echo "***** Cleaning up..."
 
