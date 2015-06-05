@@ -105,7 +105,7 @@ git submodule update
 
 # Install Facebook's OSS performance toolkit
 cd ~
-git clone https://github.com/Kazanir/oss-performance.git oss
+git clone https://github.com/hhvm/oss-performance.git oss
 cd oss
 composer install
 echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
