@@ -46,8 +46,8 @@ sudo chown www-data:www-data /var/log/php5-fpm.log
 mysql -u root -pmysql -e "CREATE USER '$USER'@'localhost';"
 mysql -u root -pmysql -e "GRANT ALL ON *.* TO '$USER'@'localhost';"
 
-mysql -u root -pmysql -e "CREATE USER 'drupal_bench'@'localhost';"
-mysql -u root -pmysql -e "GRANT ALL ON *.* TO 'drupal_bench'@'localhost' IDENTIFIED BY 'drupal_bench';"
+mysql -u root -pmysql -e "CREATE USER 'drupal_bench'@'%';"
+mysql -u root -pmysql -e "GRANT ALL ON *.* TO 'drupal_bench'@'%' IDENTIFIED BY 'drupal_bench';"
 
 mysql -u root -pmysql -e "FLUSH PRIVILEGES;"
 mysql -u root -pmysql -e "SET GLOBAL max_connections = 1000;"
