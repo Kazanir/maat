@@ -43,6 +43,8 @@ sudo chown -R www-data:www-data /var/log/apache2
 sudo chown www-data:www-data /var/log/php5-fpm.log
 
 # MySQL user setup
+mysql -u root -pmysql -e "CREATE DATABASE drupal_bench;"
+
 mysql -u root -pmysql -e "CREATE USER '$USER'@'localhost';"
 mysql -u root -pmysql -e "GRANT ALL ON *.* TO '$USER'@'localhost';"
 
