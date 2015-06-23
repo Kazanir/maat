@@ -2,7 +2,7 @@
   "runtimes": {
     "HHVM 3.7.1 Repo Auth": {
       "type": "hhvm",
-      "bin": "/usr/bin/hhvm",
+      "bin": "/usr/bin/hhvm"
     },
     "PHP7 (24-May-2015)": {
       "type": "php-src",
@@ -18,4 +18,3 @@
     "drupal8-page-cache"
   ]
 }
-
