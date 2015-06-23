@@ -89,5 +89,5 @@ function process_target(string $target, string $concurrency, array $runtimes): v
 }
 
 function post_results(Map<string, mixed> $result): void {
-  print_r($result);
+  syslog(LOG_INFO,print_r($result, TRUE));
 }
