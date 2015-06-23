@@ -9,7 +9,7 @@ if [ "$D8_COMMIT" != "none" ]; then
   cd ~/drupal-8.0.0-beta11
   git checkout $D8_COMMIT
   D8_ACTUAL_COMMIT=`git rev-parse HEAD`
-  tar -czf ~/drupal-8.0.0-beta11.tar.gz ~/drupal-8.0.0-beta11
+  tar -C /home/ubuntu -czf ~/drupal-8.0.0-beta11.tar.gz drupal-8.0.0-beta11
   mv ~/drupal-8.0.0-beta11.tar.gz ~/oss/targets/drupal8/drupal-8.0.0-beta11.tar.gz
 fi
 
