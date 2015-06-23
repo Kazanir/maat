@@ -84,10 +84,31 @@ function process_target(string $target, string $concurrency, array $runtimes): v
     }
     $r["responses"] = $http;
 
-    post_results($r);
+    handle_results($r);
   }
 }
 
-function post_results(Map<string, mixed> $result): void {
-  syslog(LOG_INFO,print_r($result, TRUE));
+function handle_results(Map<string, mixed> $result): void {
+  $endpoint = getenv("MAAT_RESULTS_ENDPOINT");
+  if ($endpoint) {
+    post_results($endpoint, $result);
+  }
+  else {
+    syslog(LOG_INFO, print_r($result, TRUE));
+  }
+}
+
+function post_results(string $endpoint, Map<string, mixed> $result) {
+  $data = json_encode($result);
+
+  $ch = curl_init($endpoint);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFTER, TRUE);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data),
+  ]);
+
+  $response = curl_exec($ch);
 }
