@@ -94,7 +94,7 @@ function handle_results(Map<string, mixed> $result): void {
     post_results($endpoint, $result);
   }
   else {
-    syslog(LOG_INFO, print_r($result, TRUE));
+    syslog(LOG_INFO, json_encode($result));
   }
 }
 
