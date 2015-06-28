@@ -2,7 +2,7 @@
 
 # Do setup.
 CURRENT_DATE=`date +"%Y-%m-%d"`
-D8_COMMIT=${1:-8.0.x}
+D8_COMMIT=${2:-8.0.x}
 
 if [ "$D8_COMMIT" != "none" ]; then
   git clone https://github.com/drupal/drupal.git ~/drupal-8.0.0-beta11
@@ -20,7 +20,7 @@ cp ~/oss/base/PerfSettings.php ~/maat/tools/oss/PerfSettingsBackup.php
 
 # Prepare concurrencies
 IFS=","
-CONCURRENCIES_RAW=${2:-"1,5,20"}
+CONCURRENCIES_RAW=${1:-"1,5,20"}
 CONCURRENCIES=($CONCURRENCIES_RAW)
 
 for c in "${CONCURRENCIES[@]}"
@@ -45,6 +45,8 @@ echo -e "\n***** Cleaning up..."
 cp ~/maat/tools/oss/PerfSettingsBackup.php ~/oss/base/PerfSettings.php
 sudo mv ~/maat/tools/oss/opcache.ini /etc/php5/mods-available/opcache.ini
 
-rm -r ~/maat/results
-rm -rf /tmp/hhvm-nginx*
+if [ "$MAAT_AUTO_CLEANUP_RESULTS" = true ]; then
+  rm -r ~/maat/results
+  rm -rf /tmp/hhvm-nginx*
+fi
 
