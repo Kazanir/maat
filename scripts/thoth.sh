@@ -27,8 +27,8 @@ for c in "${CONCURRENCIES[@]}"
 do
   echo -e "\n************************************************"
   echo -e "***** Running D8 batch with concurrency ${c}..."
-  CONC_LINE=`grep -n "BenchmarkConcurrency" ~/oss-performance/base/PerfSettings.php | cut -f1 -d:`
-  sed -i "$(($CONC_LINE + 1))s/return.*/return ${c};/" ~/oss-performance/base/PerfSettings.php 
+  CONC_LINE=`grep -n "BenchmarkConcurrency" ~/oss/base/PerfSettings.php | cut -f1 -d:`
+  sed -i "$(($CONC_LINE + 1))s/return.*/return ${c};/" ~/oss/base/PerfSettings.php 
   hhvm ~/oss/batch-run.php --i-am-not-benchmarking --no-proxygen < ~/maat/tools/d8_progress.json > ~/maat/results/results_c${c}_${D8_ACTUAL_COMMIT}_${CURRENT_DATE}.json
 
 done
