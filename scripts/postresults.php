@@ -26,6 +26,11 @@ function results_dir(): string {
 }
 
 <<__Memoize>>
+function infra_tag(): string {
+  return getenv("MAAT_INFRASTRUCTURE_TAG");
+}
+
+<<__Memoize>>
 function runtime_labels(): Map<string, string> {
   $labels = Map {
     "php5" => "PHP 5.6.9",
@@ -61,6 +66,7 @@ function process_target(string $target, string $concurrency, array $runtimes): v
   foreach ($runtimes as $runtime => $results) {
     $comb = $results['Combined'];
     $r = Map {};
+    $r["infra"] = infra_tag();
     $r["rps"] = $comb["Siege RPS"];
     $r["requests"] = $comb["Siege requests"];
     $r["requests_success"] = $comb["Siege successful requests"];
@@ -75,15 +81,7 @@ function process_target(string $target, string $concurrency, array $runtimes): v
     $r["commit_time"] = commit_time();
     $r["concurrency"] = $concurrency;
 
-    $http = Map {};
-    foreach ($comb as $key => $value) {
-      $code = substr($key, 6, 3);
-      if (substr($key, 0, 5) == "Nginx" && is_numeric($code)) {
-        $http[$code] = $value;
-      }
-    }
-    $r["responses"] = $http;
-
+    $r["raw"] = $comb;
     handle_results($r);
   }
 }
