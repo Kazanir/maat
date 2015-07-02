@@ -60,7 +60,7 @@ sudo service php5-fpm restart
 # @todo: PHP5 config files
 
 # @todo: PHP7 setup
-wget http://repos.zend.com/zend-server/early-access/php7/php-7.0-240515-DEB-x86_64.tar.gz
+wget http://www.paddedhelmets.com/sites/default/files/php-7.0-240515-DEB-x86_64.tar.gz
 sudo tar zxPf php-7.*.tar.gz
 sudo cp ~/maat/php7/etc-initd-php7fpm /etc/init.d/php7-fpm
 sudo chmod a+x /etc/init.d/php7-fpm
