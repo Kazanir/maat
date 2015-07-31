@@ -10,7 +10,7 @@ if [ "$D8_COMMIT" != "none" ]; then
   git checkout $D8_COMMIT
   D8_ACTUAL_COMMIT=`git rev-parse --short HEAD`
   D8_COMMIT_TIME=$(git show -s --format=%ct $D8_ACTUAL_COMMIT)
-  tar -C ~/ -czf ~/drupal-8.0.0-beta11.tar.gz drupal-8.0.0-beta11
+  tar -C ~/ -czf ~/drupal-8.0.0-beta11.tar.gz drupal-8.0.0-beta11 --exclude-vcs
   mv ~/drupal-8.0.0-beta11.tar.gz ~/oss/targets/drupal8/drupal-8.0.0-beta11.tar.gz
 fi
 
