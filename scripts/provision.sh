@@ -19,12 +19,12 @@ echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sour
 
 sudo apt-get update -y
 
-sudo apt-get install -y accountsservice adduser apache2-mpm-worker \
-  apache2-utils apparmor apt apt-transport-https apt-utils autoconf automake \
+sudo apt-get install -y accountsservice adduser \
+  apparmor apt apt-transport-https apt-utils autoconf automake \
   bash bash-completion build-essential bzip2 ca-certificates cmake coreutils \
   default-jre dos2unix dpkg ed eject findutils gcc-4.8 blackfire-agent \
   geoip-database git-flow glances grep hhvm iperf linux-tools-generic-lts-trusty \
-  libapache2-mod-fastcgi libmcrypt-dev libmemcached-dev libmysqlclient-dev \
+  libmcrypt-dev libmemcached-dev libmysqlclient-dev \
   libtool makedev man-db manpages mawk memcached mime-support mlocate \
   module-init-tools mount mountall mtr multiarch-support mysql-common \
   mysql-server ncdu ncurses-base ncurses-bin nginx blackfire-php \
@@ -60,7 +60,7 @@ sudo service php5-fpm restart
 # @todo: PHP5 config files
 
 # @todo: PHP7 setup
-wget http://www.paddedhelmets.com/sites/default/files/php-7.0-240515-DEB-x86_64.tar.gz
+wget http://repos.zend.com/zend-server/early-access/php7/php-7.0-270815-DEB-x86_64.tar.gz
 sudo tar zxPf php-7.*.tar.gz
 sudo cp ~/maat/php7/etc-initd-php7fpm /etc/init.d/php7-fpm
 sudo chmod a+x /etc/init.d/php7-fpm
