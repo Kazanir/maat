@@ -67,6 +67,7 @@ function process_target(string $target, string $concurrency, array $runtimes): v
     $comb = $results['Combined'];
     $r = Map {};
     $r["infra"] = infra_tag();
+    $r["instance"] = getenv("MAAT_INSTANCE_UUID");
     $r["rps"] = $comb["Siege RPS"];
     $r["requests"] = $comb["Siege requests"];
     $r["requests_success"] = $comb["Siege successful requests"];
@@ -81,6 +82,7 @@ function process_target(string $target, string $concurrency, array $runtimes): v
     $r["commit_time"] = commit_time();
     $r["concurrency"] = $concurrency;
 
+
     $r["raw"] = $comb;
     handle_results($r);
   }
@@ -88,15 +90,18 @@ function process_target(string $target, string $concurrency, array $runtimes): v
 
 function handle_results(Map<string, mixed> $result): void {
   $endpoint = getenv("MAAT_RESULTS_ENDPOINT");
+  // getenv returns FALSE because of course it does
+  $user = getenv("MAAT_RESULTS_USER") ?: NULL;
+  $pass = getenv("MAAT_RESULTS_PASS") ?: NULL;
   if ($endpoint) {
-    post_results($endpoint, $result);
+    post_results($result, $endpoint, $user, $pass);
   }
   else {
     syslog(LOG_INFO, json_encode($result));
   }
 }
 
-function post_results(string $endpoint, Map<string, mixed> $result) {
+function post_results(Map<string, mixed> $result, string $endpoint, ?string $user, ?string $pass) {
   $data = json_encode($result);
 
   $ch = curl_init($endpoint);
@@ -107,6 +112,9 @@ function post_results(string $endpoint, Map<string, mixed> $result) {
     'Content-Type: application/json',
     'Content-Length: ' . strlen($data),
   ]);
+  if ($user && $pass) {
+    curl_setopt($ch, CURLOPT_USERPWD, "$user:$pass");
+  }
 
   $response = curl_exec($ch);
 }

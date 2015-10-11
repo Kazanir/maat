@@ -128,6 +128,11 @@ cd siege-2.70/
 sudo make
 sudo make install
 
+# All done. Generate a UUID for this machine; this is used later in results
+# reporting.
+MAAT_INSTANCE_UUID = $(cat /proc/sys/kernel/random/uuid)
+export MAAT_INSTANCE_UUID
+
 # @todo: Wildcard DNS for *.benchmark
 # The below doesn't work on EC2, use it at your peril!!!
 # sudo cp ~/maat/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
