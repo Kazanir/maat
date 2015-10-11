@@ -8,12 +8,6 @@ wget -O - https://raw.githubusercontent.com/Kazanir/maat/master/scripts/install.
 ./maat/scripts/provision.sh
 ```
 
-This will set up 3 virtual host servers in Apache, which are for the domains `*.php5.benchmark`, `*.php7.benchmark`, and `*.hhvm.benchmark`. These servers will serve a subdomain based on a dynamic folder path under `/var/www/[subdomain]/www/`, where the final `www/` is the document root. So for example, `/var/www/drupal8/www/` would be accesssible at the following hostnames:
+Initially this repository was intending to do most of the site setup and benchmarking itself, but around the time I started working on it I found the HHVM team's OSS Performance tool (https://github.com/hhvm/oss-perforamnce). This allowed me to save a bunch of work, so I turned this repository into an orchestration layer for their tool. Primarily the tooling around `scripts/thoth.sh` will run through a large batch of benchmarks using the OSS Perf tool and then has the option to report a JSON of those results to a desired API endpoint, which is set via an environment variable.
 
-- http://drupal8.php5.benchmark
-- http://drupal8.php7.benchmark
-- http://drupal8.hhvm.benchmark
-
-The provisioning script sets up the *.benchmark domain with an internal DNS wildcard.
-
-Coming soon: Scripts to automatically provision certain Drupal setups and run Apache Bench tests on them. As well as more documentation!
+This allows me to essentially run a complete copy of the benchmarks and post their data back to my home server by means of a small AWS spot request and user-init script. An example of this is found in `scripts/ec2.sh` even though it is conceptually separate from the rest of the stuff in the repo.
