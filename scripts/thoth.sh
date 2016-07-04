@@ -15,7 +15,6 @@ if [ "$D8_COMMIT" != "none" ]; then
 fi
 
 mkdir -p ~/maat/results
-sudo mv /etc/php5/mods-available/opcache.ini ~/maat/tools/oss/opcache.ini
 cp ~/oss/base/PerfSettings.php ~/maat/tools/oss/PerfSettingsBackup.php
 
 # Prepare concurrencies
@@ -43,7 +42,6 @@ hhvm ~/maat/scripts/postresults.php
 echo -e "\n***** Cleaning up..."
 
 cp ~/maat/tools/oss/PerfSettingsBackup.php ~/oss/base/PerfSettings.php
-sudo mv ~/maat/tools/oss/opcache.ini /etc/php5/mods-available/opcache.ini
 
 if [ "$MAAT_AUTO_CLEANUP_RESULTS" = true ]; then
   rm -r ~/maat/results

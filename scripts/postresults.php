@@ -12,7 +12,7 @@ function run(): void {
 
 <<__Memoize>>
 function commit_hash(): string {
-  return getenv("D8_ACTUAL_COMMIT");
+  return (string) getenv("D8_ACTUAL_COMMIT");
 }
 
 <<__Memoize>>
@@ -27,7 +27,7 @@ function results_dir(): string {
 
 <<__Memoize>>
 function infra_tag(): string {
-  return getenv("MAAT_INFRASTRUCTURE_TAG");
+  return (string) getenv("MAAT_INFRASTRUCTURE_TAG");
 }
 
 <<__Memoize>>
@@ -47,6 +47,7 @@ function get_concurrency(string $filepath): string {
 
   return $c;
 }
+
 
 function process_results_file(string $filepath): void {
   $json = file_get_contents(results_dir() . $filepath);
