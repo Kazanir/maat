@@ -33,9 +33,9 @@ function infra_tag(): string {
 <<__Memoize>>
 function runtime_labels(): Map<string, string> {
   $labels = Map {
-    "php5" => "PHP 5.6.9",
-    "php7" => "PHP 7 (2015-05-24)",
-    "hhvm" => "HHVM 3.7.2 Repo.Auth",
+    "php5" => "PHP 5.6.23",
+    "php7" => "PHP 7.0.8",
+    "hhvm" => "HHVM 3.14.2 RA",
   };
 
   return $labels;

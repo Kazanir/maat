@@ -35,8 +35,7 @@ sudo apt-get install -y accountsservice adduser \
 
 sudo apt-get install php5.6 php7.0 php5.6-curl php7.0-curl php5.6-gd \
   php7.0-gd php5.6-cgi php7.0-cgi php5.6-ldap php7.0-ldap php5.6-mcrypt \
-  php7.0-mcrypt php5.6-redis php7.0-redis php5.6-mysql php7.0-mysql \
-  php5.6-memcache php7.0-memcache php-blackfire
+  php7.0-mcrypt phpedis php5.6-mysql php7.0-mysql php-memcache blackfire-php
 
 # Permissions chicanery
 sudo usermod -a -G www-data $USER

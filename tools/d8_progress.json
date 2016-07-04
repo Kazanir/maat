@@ -6,11 +6,11 @@
     },
     "php7": {
       "type": "php-src",
-      "bin": "/usr/local/php7/bin/php-cgi"
+      "bin": "/usr/bin/php-cgi7.0"
     },
     "php5": {
       "type": "php-src",
-      "bin": "/usr/bin/php-cgi"
+      "bin": "/usr/bin/php-cgi5.6"
     }
   },
   "targets": [

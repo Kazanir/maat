@@ -1,26 +1,23 @@
 {
   "runtimes": {
-    "HHVM 3.7.1": {
+    "HHVM 3.14.2": {
       "type": "hhvm",
       "bin": "/usr/bin/hhvm",
       "args": [
         "--no-repo-auth"
       ]
     },
-    "HHVM 3.7.1 Repo Auth": {
+    "HHVM 3.14.2 RA": {
       "type": "hhvm",
-      "bin": "/usr/bin/hhvm",
-      "args": [
-        "--repo-auth"
-      ]
+      "bin": "/usr/bin/hhvm"
     },
-    "PHP7 (24-May-2015)": {
+    "PHP 7.0.8": {
       "type": "php-src",
-      "bin": "/usr/local/php7/bin/php-cgi"
+      "bin": "/usr/bin/php-cgi7.0"
     },
-    "PHP 5.6.9": {
+    "PHP 5.6.23": {
       "type": "php-src",
-      "bin": "/usr/bin/php-cgi"
+      "bin": "/usr/bin/php-cgi5.6"
     }
   },
   "targets": [
