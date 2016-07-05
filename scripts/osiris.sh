@@ -28,5 +28,4 @@ hhvm ~/oss/batch-run.php --i-am-not-benchmarking --no-proxygen < ~/maat/tools/ba
 echo -e "\n***** Cleaning up..."
 
 cp ~/maat/tools/oss/PerfSettingsBackup.php ~/oss/base/PerfSettings.php
-sudo mv ~/maat/tools/oss/opcache.ini /etc/php5/mods-available/opcache.ini
 
