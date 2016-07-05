@@ -1,8 +1,13 @@
 {
   "runtimes": {
-    "hhvm": {
+    "hhvmra": {
       "type": "hhvm",
       "bin": "/usr/bin/hhvm"
+    },
+    "hhvm": {
+      "type": "hhvm",
+      "bin": "/usr/bin/hhvm",
+      "args": ["--no-repo-auth"]
     },
     "php7": {
       "type": "php-src",
