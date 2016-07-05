@@ -31,12 +31,12 @@ sudo apt-get install -y accountsservice adduser \
   udev ufw unixodbc-dev vim vim-common vim-tiny wget xml-core zsh \
   libcurl4-openssl-dev libmcrypt-dev libxml2-dev libjpeg-dev libfreetype6-dev \
   libmysqlclient-dev libt1-dev libgmp-dev libpspell-dev libicu-dev \
-  librecode-dev libjpeg62
+  librecode-dev libjpeg62 unzip sqlite3
 
 sudo apt-get install php5.6 php7.0 php5.6-curl php7.0-curl php5.6-gd \
   php7.0-gd php5.6-cgi php7.0-cgi php5.6-ldap php7.0-ldap php5.6-mcrypt \
   php7.0-mcrypt phpedis php5.6-mysql php7.0-mysql php-memcache php5.6-xml \
-  php7.0-xml blackfire-php
+  php7.0-xml php5.6-mbstring php7.0-mbstring blackfire-php
 
 # Permissions chicanery
 sudo usermod -a -G www-data $USER
