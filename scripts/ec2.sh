@@ -9,11 +9,11 @@ set -vx
 cd /home/ubuntu
 apt-get update -y
 apt-get install git -y
-MAAT_RESULTS_ENDPOINT='http://www.your.results.endpoint.here'
-MAAT_INFRASTRUCTURE_TAG='ec2/c4.xlarge'
+MAAT_RESULTS_ENDPOINT='http://www.paddedhelmets.com/api/perfstats/add'
+MAAT_INFRASTRUCTURE_TAG="ec2/$INSTANCE_CLASS"
 MAAT_AUTO_CLEANUP_RESULTS=false
-MAAT_RESULTS_USER='basicauth_username'
-MAAT_RESULTS_PASS='basicauth_password'
+MAAT_RESULTS_USER='kazanir'
+MAAT_RESULTS_PASS='yogsothoth'
 export MAAT_AUTO_CLEANUP_RESULTS
 export MAAT_INFRASTRUCTURE_TAG
 export MAAT_RESULTS_ENDPOINT
@@ -41,17 +41,16 @@ aws ec2 request-spot-instances \
   --launch-specification \
     "{ 
       \"ImageId\":\"ami-5189a661\", 
-      \"KeyName\":\"YOUR PRIVATE KEY NAME HERE\", 
+      \"KeyName\":\"PH Christian 20140126\", 
       \"InstanceType\":\"$INSTANCE_CLASS\", 
-      \"SecurityGroups\": [\"your_security_group_here\"], 
-      \"SecurityGroupIds\": [\"sg-12345678\"], 
+      \"SecurityGroups\": [\"drupal_testing\"], 
+      \"SecurityGroupIds\": [\"sg-1a5eae7e\"], 
       \"BlockDeviceMappings\": [
             {
                 \"DeviceName\": \"/dev/sda1\",
                 \"Ebs\": {
                     \"VolumeSize\": 20,
-                    \"DeleteOnTermination\": true,
-                    \"Encrypted\": true
+                    \"DeleteOnTermination\": true
                 }
             }
         ],

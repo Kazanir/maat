@@ -8,6 +8,7 @@ if [ "$D8_COMMIT" != "none" ]; then
   git clone https://github.com/drupal/drupal.git ~/drupal-8.0.0-rc1
   cd ~/drupal-8.0.0-rc1
   git checkout $D8_COMMIT
+  composer install -n
   D8_ACTUAL_COMMIT=`git rev-parse --short HEAD`
   D8_COMMIT_TIME=$(git show -s --format=%ct $D8_ACTUAL_COMMIT)
   tar -C ~/ -czf ~/drupal-8.0.0-rc1.tar.gz drupal-8.0.0-rc1 --exclude-vcs
