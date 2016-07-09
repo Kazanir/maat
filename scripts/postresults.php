@@ -35,7 +35,8 @@ function runtime_labels(): Map<string, string> {
   $labels = Map {
     "php5" => "PHP 5.6.23",
     "php7" => "PHP 7.0.8",
-    "hhvm" => "HHVM 3.14.2 RA",
+    "hhvm" => "HHVM 3.14.2",
+    "hhvmra" => "HHVM 3.14.2 RA",
   };
 
   return $labels;
