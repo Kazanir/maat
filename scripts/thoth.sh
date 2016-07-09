@@ -2,7 +2,7 @@
 
 # Do setup.
 CURRENT_DATE=`date +"%Y-%m-%d"`
-D8_COMMIT=${2:-8.0.x}
+D8_COMMIT=${2:-8.2.x}
 
 if [ "$D8_COMMIT" != "none" ]; then
   git clone https://github.com/drupal/drupal.git ~/drupal-8.0.0-rc1
